@@ -3,20 +3,23 @@
 <head>
 <style>
 .parentHolder{
-width:25%;
-float:left;
-min-height:150px;
-background:#ccc;
-margin:10px;
-border:2px solid #333;
+	width:25%;
+	float:left;
+	min-height:150px;
+	background:#ccc;
+	margin:10px;
+	border:2px solid #333;
+}
+.active{
+	border-color:#f00 !important;
 }
 .child{
-width:15px;
-height:15px;
-margin:5px;
-background:#356;
-border:1px solid black;
-float:left;
+	width:15px;
+	height:15px;
+	margin:5px;
+	background:#356;
+	border:1px solid black;
+	float:left;
 }
 </style>
 </head>
@@ -29,15 +32,21 @@ function createParent() {
   var parent = document.createElement('div');
   parent.className = "parentHolder";
   parent.addEventListener('click',function(e){
+	var parents = document.querySelectorAll(".parentHolder");
+	for(var a =0; a<parents.length;a++){
+		parents[a].className = "parentHolder";
+	}
     currentParent = e.currentTarget;
+	currentParent.className +=" active";
   });
   document.body.appendChild(parent);
 }
 
 function createChild(){
+if(!currentParent)return;
 var child = document.createElement("div");
-child.className = "child"
-currentParent.appendChild(child);
+	child.className = "child";
+	currentParent.appendChild(child);
 }
 </script>
 
