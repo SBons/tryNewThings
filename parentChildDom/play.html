@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.parentHolder{
+width:25%;
+float:left;
+min-height:150px;
+background:#ccc;
+margin:10px;
+border:2px solid #333;
+}
+.child{
+width:15px;
+height:15px;
+margin:5px;
+background:#356;
+border:1px solid black;
+float:left;
+}
+</style>
+</head>
+<body>
+
+<p>Click the button to create an IMG element.</p>
+
+<button onclick="createParent()">Create Parent</button>
+<button onclick="createChild()">Create Child</button>
+<script>
+var currentParent;
+function createParent() {
+  var parent = document.createElement('div');
+  parent.className = "parentHolder";
+  parent.addEventListener('click',function(e){
+    currentParent = e.currentTarget;
+  });
+  document.body.appendChild(parent);
+}
+
+function createChild(){
+var child = document.createElement("div");
+child.className = "child"
+currentParent.appendChild(child);
+}
+</script>
+
+</body>
+</html>
